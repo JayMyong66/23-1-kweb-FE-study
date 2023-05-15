@@ -105,3 +105,7 @@ a {
     color-scheme: dark;
   }
 } */
+.square {
+  width: 30px;
+  height: 30px;
+}
