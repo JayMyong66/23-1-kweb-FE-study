@@ -2,48 +2,38 @@ import React, { useEffect, useRef, useState } from 'react';
 import Card from '../component/Card.jsx';
 import Form from '../component/Form.jsx';
 import Link from 'next/link.js';
+import useStore from '../store.js';
 
 export default function Todos() {
   const newId = useRef(4);
+  const { todos, updateTodos } = useStore(state => state);
 
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'first',
-    },
-    {
-      id: 2,
-      title: 'second',
-    },
-    {
-      id: 3,
-      title: 'third',
-    },
-  ]);
   useEffect(() => {}, [todos]);
 
-  const handleInsert = text => {
+  const handleInsert = (text, selected) => {
     const newDataTitle = text;
     const newData = {
       id: newId.current++,
       title: newDataTitle,
+      prior: selected,
     };
-    setTodos([...todos, newData]);
+    console.log('Insert!!', newData);
+    updateTodos([...todos, newData]);
   };
 
   const handleDelete = id => {
     const newTodos = todos.filter(todo => {
       return todo.id != id;
     });
-    setTodos(newTodos);
+    updateTodos(newTodos);
   };
 
   const handleUpdate = (text, id) => {
     const newTodos = todos.map(todo => {
       return todo.id === id ? { ...todo, title: text } : todo;
     });
-
-    setTodos(newTodos);
+    console.log('새거', newTodos);
+    updateTodos(newTodos);
   };
 
   return (

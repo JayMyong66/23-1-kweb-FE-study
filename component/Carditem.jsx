@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import useStore from '../store';
 
 export default function Carditem({ todo, handleDelete, handleUpdate }) {
+  const { changeTodos } = useStore(state => state);
+
   const [isChecked, setIsChecked] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const [text, setText] = useState('');
@@ -47,11 +50,14 @@ export default function Carditem({ todo, handleDelete, handleUpdate }) {
           <input type="checkbox" id={todo.id} onClick={handleCheck}></input>
           {!isChecked && <span>{todo.title + '   '}</span>}
           {isChecked && <span class="updated">{todo.title + '   '} 완료 !</span>}
-
+          <br></br>
+          <span>우선순위 : {todo.prior}</span>
+          <br></br>
           <button onClick={() => handleDelete(todo.id)}>삭제</button>
           <button onClick={() => onUpdate()}>수정</button>
         </div>
       )}
+      <br></br>
     </>
   );
 }
