@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function Form({ onInsert }) {
   const [text, setText] = useState('');
-  const [Selected, setSelected] = useState('');
+  const [Selected, setSelected] = useState('medium');
 
   const onChange = e => {
     const newData = e.target.value;

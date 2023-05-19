@@ -35,9 +35,9 @@ export default function Carditem({ todo, handleDelete, handleUpdate }) {
   };
 
   return (
-    <>
+    <div className="card">
       {isUpdate ? (
-        <div>
+        <div className="content">
           <h3>{todo.title} 수정 </h3>
           <form onSubmit={onSubmit}>
             <input value={text} onChange={onChange}></input>
@@ -46,7 +46,7 @@ export default function Carditem({ todo, handleDelete, handleUpdate }) {
           <button onClick={() => onUpdate()}>취소</button>
         </div>
       ) : (
-        <div>
+        <div className="content">
           <input type="checkbox" id={todo.id} onClick={handleCheck}></input>
           {!isChecked && <span>{todo.title + '   '}</span>}
           {isChecked && <span class="updated">{todo.title + '   '} 완료 !</span>}
@@ -57,7 +57,21 @@ export default function Carditem({ todo, handleDelete, handleUpdate }) {
           <button onClick={() => onUpdate()}>수정</button>
         </div>
       )}
-      <br></br>
-    </>
+
+      <style jsx>{`
+        .card {
+          margin: 10px;
+          border: 2px solid black;
+          width: 130px;
+          height: 130px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .content {
+        }
+      `}</style>
+    </div>
   );
 }

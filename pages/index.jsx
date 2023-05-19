@@ -1,12 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
-
-import { useState } from 'react';
 import Link from 'next/link.js';
 import useStore from '../store';
 
 export default function Index() {
-  const { bears, increasePopulation, removeAllBears, todos, updateTodos } = useStore(state => state);
+  const { todos } = useStore(state => state);
 
   const totalCount = todos.length;
   const priorCount = { high: 0, medium: 0, low: 0, highest: 0, lowest: 0 };
@@ -26,6 +24,8 @@ export default function Index() {
 
   return (
     <>
+      <h1 className="bg-neutral-500">Tailwind!</h1>
+      <h1 className="cij">css in jsx!</h1>
       <button>
         <Link href={`/todos`}>todos로 갑니다!</Link>
       </button>
@@ -46,6 +46,12 @@ export default function Index() {
       >
         changeTodos
       </button> */}
+      <style jsx>{`
+        .cij {
+          background-color: blue;
+          color: white;
+        }
+      `}</style>
     </>
   );
 }

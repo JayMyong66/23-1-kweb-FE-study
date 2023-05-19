@@ -105,17 +105,12 @@ a {
     color-scheme: dark;
   }
 } */
-/* .square {
+
+.square {
   width: 30px;
   height: 30px;
 }
 
 .updated {
   text-decoration: line-through;
-} */
-
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
+}
